@@ -4,7 +4,9 @@ RELEASE=$1
 
 echo "Processing release: $RELEASE"
 RELEASE_INSTALL_DIR=`pwd`"/matlab/${RELEASE}"
-MANIFEST_FILE=`pwd`"/manifests/${RELEASE}_Linux.enc.manifest"
+MANIFESTS=`pwd`"/manifests"
+mkdir -p $MANIFESTS
+MANIFEST_FILE=${MANIFESTS}/${RELEASE}_Linux.enc.manifest"
 
 # Check if the release directory already exists
 if [ -d "$RELEASE_INSTALL_DIR" ]; then
@@ -23,10 +25,7 @@ if [ $? -eq 0 ]; then
     # delete the folder /mnt/${RELEASE} if the signature verification is successful
     rm -rf $RELEASE_INSTALL_DIR
     echo "Deleted folder: $RELEASE_INSTALL_DIR"
-    echo "----------------------------------------"
-    return 0
 else
     echo "Signature verification failed for $MANIFEST_FILE"
-    echo "----------------------------------------"
-    return 1
 fi
+    echo "----------------------------------------"

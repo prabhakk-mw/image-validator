@@ -6,7 +6,7 @@ echo "Processing release: $RELEASE"
 RELEASE_INSTALL_DIR=`pwd`"/matlab/${RELEASE}"
 MANIFESTS=`pwd`"/manifests"
 mkdir -p $MANIFESTS
-MANIFEST_FILE=${MANIFESTS}/${RELEASE}_Linux.enc.manifest"
+MANIFEST_FILE=${MANIFESTS}/${RELEASE}"_Linux.enc.manifest"
 
 # Check if the release directory already exists
 if [ -d "$RELEASE_INSTALL_DIR" ]; then
@@ -28,4 +28,4 @@ if [ $? -eq 0 ]; then
 else
     echo "Signature verification failed for $MANIFEST_FILE"
 fi
-    echo "----------------------------------------"
+echo "----------------------------------------"
